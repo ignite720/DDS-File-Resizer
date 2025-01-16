@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image
@@ -47,7 +49,8 @@ def process_files(files, threshold_width):
 
 def main():
     threshold_width = int(input("Enter the threshold_width for resizing (e.g., 512): "))
-    source_directory = select_directory('Select Source Folder with DDS Files')
+    #source_directory = select_directory('Select Source Folder with DDS Files')
+    source_directory = Path.cwd()
     if source_directory:
         files = [os.path.join(root, f) for root, dirs, filenames in os.walk(source_directory) for f in filenames if f.endswith('.dds')]
         process_files(files, threshold_width)
